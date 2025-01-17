@@ -1,8 +1,8 @@
-# BloxTools
+# 🔨 BloxTools 🔧
 
 This is a 3rd party chrome extension developed for both https://bloxgame.com and https://bloxgame.com
 
-## Current Features
+## ⭐ Current Features ⭐
 
 - **Track 2v2 battle team totals**:
   - Show the current score for each team.
@@ -16,9 +16,9 @@ This is a 3rd party chrome extension developed for both https://bloxgame.com and
 - **Manual score update**:
   - Allows the user to manually trigger a score update using the "Re-Check" button in the event of joining a battle mid way or visiting an old battle.
 
-## Installation
+## 💻 Installation 💻
 
-### 1. Download the Files
+### 1. ⬇️ Download the Files ⬇️
 To get started, download the repository files to your computer by cloning the repo or downloading it as a ZIP file (must extract to a single folder after downloading). Make sure you have all the following files:
 
 - **icons** folder
@@ -27,7 +27,7 @@ To get started, download the repository files to your computer by cloning the re
 - **README.md**
 - **LICENSE**
 
-### 2. Set Up the Extension
+### 2. ⚙️ Set Up the Extension ⚙️
 
 1. Create a folder on your computer and place all the downloaded files (including the `icons` folder) in that folder (Lets call it BT).
 The structure of BT folder should look like:
@@ -49,7 +49,7 @@ The structure of BT folder should look like:
 
 8. The extension will now be installed and should appear on the Extensions page. You may need to enable it if it isn't already.
 
-### 3. Using the Extension
+### 3. 🏃 Using the Extension 🏃
 If wanted, pin the extension so its not hidden in your chrome window.
 
 Once the extension is installed, it should automatically start working when loading up the BloxGame website.
