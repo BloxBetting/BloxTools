@@ -56,6 +56,15 @@ Once the extension is installed, it should automatically start working when load
 
 That's it! Your extension is now set up and ready to use.
 
+## 📝 To-Do List 📝
+
+- **✨ Add support for more battle types**: Currently focused on 2v2, but I plan to extend functionality to other game modes, mainly leading team highlights.
+- **📈 Add a Net gain / Loss tracker to track how much your up / down per session, as well as your starting balance
+- **🎮 Improve user interface**: Work on better visuals, customization options, and smoother transitions for score updates.
+- **📱 Mobile Compatibility**: Ensure the extension works seamlessly on mobile browsers.
+- **📈 Performance Optimization**: Optimize code for faster score tracking, especially for longer or more complex battles.
+- **🎥 Create more tutorials**: Develop step-by-step video guides on installation and usage for new users.
+
 ## 📱 Stay Connected 📱
 
 - **Join our Discord Community**: Connect with other players, get support, or share feedback about the extension! Join us on Discord [BloxTools Discord](https://discord.gg/kUZUtp54qy).
