@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "BloxTools",
+  "version": "4.7",
+  "description": "Track and monitor team scores in real-time during 2v2 battles on BloxGame. Stay on top of your game with live score updates!",
+  
+  "permissions": [
+    "activeTab"
+  ],
+
+  "host_permissions": [
+    "https://bloxgame.us/*",
+    "https://bloxgame.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://bloxgame.us/*",
+        "https://bloxgame.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  }
+}
