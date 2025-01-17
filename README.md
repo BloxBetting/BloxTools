@@ -18,8 +18,6 @@ This is a 3rd party chrome extension developed for both https://bloxgame.com and
 
 ## Installation
 
-## Installation
-
 ### 1. Download the Files
 To get started, download the repository files to your computer by cloning the repo or downloading it as a ZIP file (must extract to a single folder after downloading). Make sure you have all the following files:
 
