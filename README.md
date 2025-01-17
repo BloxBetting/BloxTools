@@ -2,7 +2,7 @@
 
 This is a 3rd party chrome extension developed for both https://bloxgame.com and https://bloxgame.com
 
-## Features
+## Current Features
 
 - **Track 2v2 battle team totals**:
   - Show the current score for each team.
