@@ -14,7 +14,7 @@ This is a 3rd party chrome extension developed for both https://bloxgame.com and
   - The score updates automatically every frame, providing a smooth experience.
   
 - **Manual score update**:
-  - Allows the user to manually trigger a score update using the "Re-Check" button in the event of joining a battle mid way or visiting an old battle.
+  - Allows the user to manually trigger a score update using the "Update" button in the event of joining a battle mid way or visiting an old battle.
 
 ## 💻 Installation 💻
 
