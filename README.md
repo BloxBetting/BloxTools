@@ -1,6 +1,6 @@
 # 🔨 BloxTools 🔧
 
-This is a 3rd party chrome extension developed for both https://bloxgame.com and https://bloxgame.com
+This is a 3rd party chrome extension developed for both https://bloxgame.com and https://bloxgame.us
 
 ## ⭐ Current Features ⭐
 
