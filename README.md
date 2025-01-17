@@ -55,3 +55,11 @@ If wanted, pin the extension so its not hidden in your chrome window.
 Once the extension is installed, it should automatically start working when loading up the BloxGame website.
 
 That's it! Your extension is now set up and ready to use.
+
+## 📱 Stay Connected 📱
+
+- **Join our Discord Community**: Connect with other players, get support, or share feedback about the extension! Join us on Discord [BloxTools Discord](https://discord.gg/kUZUtp54qy).
+
+- **Follow us on YouTube**: Stay up to date with tutorials, updates, and new features for the extension, as well as bloxgame content by subscribing to my YouTube channel. [BloxBetting Youtube](https://www.youtube.com/@BloxBetting).
+
+We’d love to hear from you and see how you’re enjoying the extension! Don't hesitate to reach out if you have any questions or suggestions.  
