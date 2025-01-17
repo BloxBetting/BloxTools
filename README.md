@@ -58,7 +58,7 @@ That's it! Your extension is now set up and ready to use.
 
 ## 📝 To-Do List 📝
 
-:white_square_button: ✨ Add support for more battle types**: Currently focused on 2v2, but I plan to extend functionality to other game modes, mainly leading team highlights.
+:white_square_button: ✨ Add support for more battle types- functionality to other game modes, mainly leading team highlights.
 
 :white_square_button: 📈 Add a Net gain / Loss tracker to track how much your up / down per session, as well as your starting balance
 
