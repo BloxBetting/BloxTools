@@ -16,6 +16,8 @@ This is a 3rd party chrome extension developed for both https://bloxgame.com and
 - **Manual score update**:
   - Allows the user to manually trigger a score update using the "Update" button in the event of joining a battle mid way or visiting an old battle.
 
+- **Net gain / loss tracker**:
+  - User can clear / start over by pressing the "Clear" button
 ## 💻 Installation 💻
 
 ### 1. ⬇️ Download the Files ⬇️
