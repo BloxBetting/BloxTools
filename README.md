@@ -10,12 +10,6 @@ This is a 3rd party chrome extension developed for both https://bloxgame.com and
   - Highlight the leading team with a glowing effect.
   - Real-time score updates as the battle progresses.
   
-- **Real-time updates**:
-  - The score updates automatically every frame, providing a smooth experience.
-  
-- **Manual score update**:
-  - Allows the user to manually trigger a score update using the "Update" button in the event of joining a battle mid way or visiting an old battle.
-
 - **Net gain / loss tracker**:
   - User can clear / start over by pressing the "Clear" button
 ## 💻 Installation 💻
@@ -62,7 +56,7 @@ That's it! Your extension is now set up and ready to use.
 
 :white_square_button: ✨ Add support for more battle types- functionality to other game modes, mainly leading team highlights.
 
-:white_square_button: 📈 Add a Net gain / Loss tracker to track how much your up / down per session, as well as your starting balance
+:ballot_box_with_check: 📈 Add a Net gain / Loss tracker to track how much your up / down per session, as well as your starting balance
 
 :ballot_box_with_check: 🎮 Improve user interface**: Work on better visuals, customization options, and smoother transitions for score updates.
 
