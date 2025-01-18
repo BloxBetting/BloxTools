@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "BloxTools",
-  "version": "4.7",
-  "description": "Track and monitor team scores in real-time during 2v2 battles on BloxGame. Stay on top of your game with live score updates!",
+  "version": "4.9",
+  "description": "3rd party extension for BloxGame",
   
   "permissions": [
     "activeTab"
