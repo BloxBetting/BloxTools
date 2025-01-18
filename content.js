@@ -16,6 +16,8 @@ const info = `
  |   ⤷ Show score difference           |  • Monitors player score elements     | 
  |   ⤷ Highlight the leading team      |  • Compares team scores and updates   | 
  |   ⤷ Real-time updating score        |  • Creates dynamic score display      | 
+ |  • Net gain + loss tracker          |                                       |
+ |   ⤷ Calculate total gain / loss     |  • Can reset session using "Clear"    |
  |_____________________________________|_______________________________________| 
 `;
 
@@ -173,18 +175,18 @@ function updateTeamTotalDisplay(team1Total, team2Total) {
 
     if (team1TotalDiv && team2TotalDiv) {
         // Format and update team total amounts
-        team1TotalDiv.querySelector('.team-total-value').textContent = `⏣ ${formatNumber(team1Total)}`;
-        team2TotalDiv.querySelector('.team-total-value').textContent = `⏣ ${formatNumber(team2Total)}`;
+        team1TotalDiv.querySelector('.team-total-value').textContent = `${formatNumber(team1Total)}`;
+        team2TotalDiv.querySelector('.team-total-value').textContent = `${formatNumber(team2Total)}`;
 
         // Set color based on team totals
         if (team1Total > team2Total) {
             team1TotalDiv.querySelector('.team-total-value').style.color = '#4CAF50'; // Green for higher value
             team2TotalDiv.querySelector('.team-total-value').style.color = '#F44336'; // Red for lower value
-            teamDifferenceDiv.textContent = `Up by ⏣ ${formatNumber(team1Total - team2Total)}`;
+            teamDifferenceDiv.textContent = `Up by ${formatNumber(team1Total - team2Total)}`;
         } else if (team2Total > team1Total) {
             team1TotalDiv.querySelector('.team-total-value').style.color = '#F44336'; // Red for lower value
             team2TotalDiv.querySelector('.team-total-value').style.color = '#4CAF50'; // Green for higher value
-            teamDifferenceDiv.textContent = `Down by ⏣ ${formatNumber(team2Total - team1Total)}`;
+            teamDifferenceDiv.textContent = `Down by ${formatNumber(team2Total - team1Total)}`;
         } else {
             team1TotalDiv.querySelector('.team-total-value').style.color = '#ADD8E6'; // Blue for equal
             team2TotalDiv.querySelector('.team-total-value').style.color = '#ADD8E6'; // Blue for equal
@@ -246,7 +248,7 @@ function createTeamTotalDisplay(container) {
     team1Div.style.color = 'white';
     team1Div.style.fontWeight = 'bold';
     team1Div.style.fontSize = '15px'; // Reduced font size
-    team1Div.innerHTML = `Team 1: <span class="team-total-value">⏣ 0.00</span>`;
+    team1Div.innerHTML = `Team 1: <span class="team-total-value">0.00</span>`;
 
     // Team 2 Total Div
     const team2Div = document.createElement('div');
@@ -254,7 +256,7 @@ function createTeamTotalDisplay(container) {
     team2Div.style.color = 'white';
     team2Div.style.fontWeight = 'bold';
     team2Div.style.fontSize = '15px'; // Reduced font size
-    team2Div.innerHTML = `Team 2: <span class="team-total-value">⏣ 0.00</span>`;
+    team2Div.innerHTML = `Team 2: <span class="team-total-value">0.00</span>`;
 
     // Team Difference Div
     const teamDifferenceDiv = document.createElement('div');
@@ -306,3 +308,143 @@ console.log(runtime);
     createOrUpdateTeamTotalDisplay(); // Ensure display is created/updated
     requestAnimationFrame(updateLoop); // Continue running the update loop at the next available frame
 })();
+
+// Net loss / gain checker
+(() => {
+  let startingBalance = null;
+  let currentBalance = null;
+  let tracking = false;
+
+  // Format the number with commas and 2 decimal places
+  const formatNumber = (value) => {
+    return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+
+  const formatNetChange = (value) => {
+    if (value > 0) {
+      return `<span style="color: rgb(76, 175, 80); font-weight: bold;">↑+${formatNumber(value)}</span>`;
+    } else if (value < 0) {
+      return `<span style="color: rgb(244, 67, 54); font-weight: bold;">↓${formatNumber(value)}</span>`;
+    } else {
+      return `<span style="color: gray;">0.00</span>`;
+    }
+  };
+
+  const createTrackerUI = () => {
+    const navElement = document.querySelector(".header_headerNav__weXq1");
+    if (!navElement) {
+      // Retry after 500ms if the nav element is not yet available
+      setTimeout(createTrackerUI, 500);
+      return;
+    }
+
+    const trackerDiv = document.createElement("div");
+    trackerDiv.id = "net-gain-tracker";
+    trackerDiv.style.display = "flex";
+    trackerDiv.style.alignItems = "center";
+    trackerDiv.style.justifyContent = "center";
+    trackerDiv.style.padding = "10px 15px";
+    trackerDiv.style.borderRadius = "8px";
+    trackerDiv.style.backgroundColor = "rgba(63, 63, 63, 0.3)";
+    trackerDiv.style.color = "rgb(224, 224, 224)";
+    trackerDiv.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 7px 15px";
+    trackerDiv.style.border = "2px solid rgb(181, 143, 32)";
+    trackerDiv.style.marginLeft = "auto";
+    trackerDiv.style.marginRight = "10px";
+
+    trackerDiv.innerHTML = `
+      <div style="display: flex; flex-direction: column; align-items: flex-start; margin-right: 10px;">
+        <span style="font-size: 14px; font-weight: 500; color: rgb(224, 224, 224);">Starting bal:</span>
+        <span id="starting-balance" style="font-size: 14px; font-variant-numeric: tabular-nums; color: white;">--</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-start; margin-right: 10px;">
+        <span style="font-size: 14px; font-weight: 500; color: rgb(224, 224, 224);">Net Profit:</span>
+        <span id="net-profit" style="font-size: 14px; font-variant-numeric: tabular-nums; color: white;">--</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <button id="start-tracker" style="padding: 4px 8px; font-size: 10px; font-weight: 500; background-color: rgb(85, 85, 85); color: rgb(224, 224, 224); border: 1px solid rgb(136, 136, 136); border-radius: 4px; cursor: pointer; transition: background-color 0.3s, transform 0.1s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Start</button>
+        <button id="reset-tracker" style="padding: 4px 8px; font-size: 10px; font-weight: 500; background-color: rgb(85, 85, 85); color: rgb(224, 224, 224); border: 1px solid rgb(136, 136, 136); border-radius: 4px; cursor: pointer; transition: background-color 0.3s, transform 0.1s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Clear</button>
+      </div>
+    `;
+
+    navElement.appendChild(trackerDiv);
+
+    // Add button event listeners
+    document.getElementById("start-tracker").addEventListener("click", startTracker);
+    document.getElementById("reset-tracker").addEventListener("click", resetTracker);
+    
+    // Add hover and click effects
+    const startButton = document.getElementById("start-tracker");
+    startButton.addEventListener("mouseenter", () => startButton.style.backgroundColor = 'rgb(100, 100, 100)');
+    startButton.addEventListener("mouseleave", () => startButton.style.backgroundColor = tracking ? 'rgb(76, 175, 80)' : 'rgb(85, 85, 85)');
+    startButton.addEventListener("mousedown", () => startButton.style.transform = "scale(0.95)");
+    startButton.addEventListener("mouseup", () => startButton.style.transform = "scale(1)");
+  };
+
+  const startTracker = () => {
+    if (tracking) return;
+
+    const balanceElement = document.querySelector(
+      ".text_text__fMaR4 span"
+    );
+    if (balanceElement) {
+      // Extract balance and remove commas before converting to a number
+      startingBalance = parseFloat(balanceElement.textContent.replace(/,/g, ''));
+      currentBalance = startingBalance;
+      tracking = true;
+
+      // Update button to indicate active state
+      const startButton = document.getElementById("start-tracker");
+      startButton.style.backgroundColor = "rgb(76, 175, 80)"; // Green when active
+      startButton.textContent = "Tracking...";
+
+      document.getElementById("starting-balance").textContent = formatNumber(startingBalance);
+      document.getElementById("net-profit").innerHTML = formatNetChange(0);
+
+      observeBalanceChanges();
+    } else {
+      alert("Balance element not found. Please try again.");
+    }
+  };
+
+  const resetTracker = () => {
+    tracking = false;
+    startingBalance = null;
+    currentBalance = null;
+
+    const startButton = document.getElementById("start-tracker");
+    startButton.style.backgroundColor = "rgb(85, 85, 85)"; // Reset to default
+    startButton.textContent = "Start";
+
+    document.getElementById("starting-balance").textContent = "--";
+    document.getElementById("net-profit").innerHTML = "--";
+  };
+
+  const observeBalanceChanges = () => {
+    const balanceElement = document.querySelector(
+      ".text_text__fMaR4 span"
+    );
+
+    if (!balanceElement) return;
+
+    const observer = new MutationObserver(() => {
+      if (!tracking) return;
+
+      const newBalance = parseFloat(balanceElement.textContent.replace(/,/g, ''));
+      if (newBalance !== currentBalance) {
+        currentBalance = newBalance;
+        const netChange = currentBalance - startingBalance;
+
+        document.getElementById("net-profit").innerHTML = formatNetChange(netChange);
+      }
+    });
+
+    observer.observe(balanceElement, { childList: true, subtree: true });
+  };
+
+  // Inject tracker UI
+setTimeout(function(){
+    createTrackerUI();
+}, 1500);
+})();
+
