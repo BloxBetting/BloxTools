@@ -207,7 +207,7 @@ function createOrUpdateTeamTotalDisplay() {
         const playerContainers = document.querySelectorAll(".battles_battlesGameSlotsSlotInfo__ut8FN");
         const vsElement = document.querySelector("div[style*='transform: translateX(50%)'] svg");
 
-        if (playerContainers.length === 4 && vsElements.length === 1) { // Ensure 4 player containers for 2v2
+        if (playerContainers.length === 4 && vsElement) { // Ensure 4 player containers for 2v2
             if (!document.getElementById('team1-total-display')) {
                 createTeamTotalDisplay(totalAmountContainer); // Create display if not already created
             }
