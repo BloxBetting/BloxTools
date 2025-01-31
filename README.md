@@ -28,6 +28,9 @@ To get started, download the repository files to your computer by cloning the re
 - **README.md**
 - **LICENSE**
 
+
+![11](https://github.com/user-attachments/assets/41cba9b7-27bf-4943-b72d-8dce3c094cb1)
+
 ### 2. ⚙️ Set Up the Extension ⚙️
 
 1. Create a folder on your computer and place all the downloaded files (including the `icons` folder) in that folder (Lets call it BT).
@@ -38,15 +41,22 @@ The structure of BT folder should look like:
 - **README.md**
 - **LICENSE**
 
+![22](https://github.com/user-attachments/assets/6fdc6429-1b44-40d8-93c1-aaa5516517ae)
+![3](https://github.com/user-attachments/assets/1ae1d72c-2368-4b1e-9ce5-b226670a0939)
+
+
 3. Open Chrome, and in the URL bar, type `chrome://extensions` and press Enter.
 
 4. On the Extensions page, enable **Developer mode** by toggling the switch in the top-right corner.
+![4](https://github.com/user-attachments/assets/3bfa468a-acb7-478a-9559-cf9b00d0cb69)
 
 5. Once developer mode is enabled, in the upper left corner of the extensions page, Click on the **Load unpacked** button.
 
-6. In the folder navigation window that opened, navigate to the folder where you placed the extension files, and select the folder (In this case, navigate to and click on the BT folder).
+6. In the folder navigation window that opened, navigate to the folder where you placed the extension files, and select the folder (In this case, navigate to and click on the BT folder, there might be a second bt folder inside, make sure you select the inner most BT folder).
+![5](https://github.com/user-attachments/assets/768b666d-f70a-4651-a234-6ea1d3099d4d)
 
 7. Once the folder (BT) is selected, click "Select folder" in the navigation window
+![6](https://github.com/user-attachments/assets/0d859e75-7aa2-43a0-baeb-4eed726eb2a5)
 
 8. The extension will now be installed and should appear on the Extensions page. You may need to enable it if it isn't already.
 
