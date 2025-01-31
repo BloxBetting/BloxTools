@@ -12,6 +12,8 @@ This is a 3rd party chrome extension developed for both https://bloxgame.com and
   
 - **Net gain / loss tracker**:
   - User can clear / start over by pressing the "Clear" button
+
+
 ![1](https://github.com/user-attachments/assets/eb3ac6ae-27dd-4181-9af4-b5d2fe5bbce6)
 ![2](https://github.com/user-attachments/assets/a5ae2602-6544-4c26-8228-37136dc677c0)
 
